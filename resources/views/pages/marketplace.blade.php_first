@@ -1,0 +1,1307 @@
+@extends('layout.layout')
+
+@php
+     $topToBottom='true';
+     $header='false';
+@endphp
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        // Initialize toastr options
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut",
+            "fontSize": "16px",
+            "toastClass": "toastr-large"
+        };
+
+        // Add custom CSS for larger toastr messages
+        $("<style>")
+            .prop("type", "text/css")
+            .html(`
+                .toast-message {
+                    font-size: 16px !important;
+                    font-weight: 500 !important;
+                }
+                .toastr-large {
+                    width: 350px !important;
+                }
+            `)
+            .appendTo("head");
+
+        $('#newsletter-form').on('submit', function(e) {
+            e.preventDefault();
+
+            // Clear previous error messages
+            $('.text-danger').html('');
+
+            // Show loading state
+            var submitBtn = $('#newsletter-submit');
+            var originalBtnText = submitBtn.find('.btn-text').text();
+            submitBtn.find('.btn-text').text('Subscribing...');
+            submitBtn.prop('disabled', true);
+
+            $.ajax({
+                url: "{{ route('newsletter.store') }}",
+                type: "POST",
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function(response) {
+                    // Reset button state
+                    submitBtn.find('.btn-text').text(originalBtnText);
+                    submitBtn.prop('disabled', false);
+
+                    if (response.success) {
+                        // Show success message with larger text
+                        toastr.success(response.message, null, {
+                            "timeOut": "7000",
+                            "extendedTimeOut": "2000"
+                        });
+
+                        // Reset form
+                        $('#newsletter-form')[0].reset();
+                    } else {
+                        // Show error message
+                        toastr.error(response.message);
+                    }
+                },
+                error: function(xhr) {
+                    // Reset button state
+                    submitBtn.find('.btn-text').text(originalBtnText);
+                    submitBtn.prop('disabled', false);
+
+                    if (xhr.status === 422) {
+                        var response = xhr.responseJSON;
+                        if (response && response.errors) {
+                            // Display validation errors
+                            var errorMessages = [];
+                            $.each(response.errors, function(key, value) {
+                                $('[name="' + key + '"]').siblings('.text-danger').html(value[0]);
+                                errorMessages.push(value[0]);
+                            });
+
+                            // Show specific error message for email uniqueness if present
+                            if (response.errors['email'] && response.errors['email'][0].includes('already been taken')) {
+                                toastr.error('This email address is already subscribed to our newsletter.');
+                            } else {
+                                toastr.error('Please check the form for errors: ' + errorMessages[0]);
+                            }
+                        } else {
+                            toastr.error('Validation failed. Please check your inputs.');
+                        }
+                    } else {
+                        toastr.error('An error occurred. Please try again later.');
+                    }
+                }
+            });
+        });
+    });
+</script>
+@endpush
+
+@section('content')
+
+    <!-- Start Header Area -->
+    @include('frontend-partials.header')
+
+
+
+    <!-- Start Side Vav -->
+    <x-sideVav/>
+    <!-- End Side Vav -->
+
+    <a class="close_side_menu" href="javascript:void(0);"></a>
+
+    <!-- Start Banner Area -->
+    <div class="rbt-banner-5 height-650 bg_image bg_image--19">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="inner text-start">
+                        <h2 class="title">Discover, Apply, Succeed – Study Abroad with KMF</h2>
+                        <div class="slider-btn rbt-button-group justify-content-start">
+                            <a class="rbt-btn btn-border icon-hover color-white radius-round" href="{{ route('book-appointment') }}">
+                                <span class="btn-text">BOOK APPOINTMENT</span>
+                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                            </a>
+                            <a class="rbt-btn-link color-white" href="{{ route('take-assessment') }}">TAKE ASSESSMENT<i class="feather-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner Area -->
+
+    <!-- start About Area -->
+
+    <!-- End About Area -->
+
+
+
+
+
+
+
+    <!-- Start category Area  -->
+    <div class="rbt-category-area bg-color-white rbt-section-gapTop">
+        <div class="container">
+            <div class="row g-5">
+
+
+
+                <!-- Start Category Box Layout  -->
+                <div class="row g-5">
+                     <h2 class="title" align="center">EXPLORE TOP UNIVERSITIES</h2>
+                <!-- Start Service Grid  -->
+
+                <!-- End Service Grid  -->
+
+                <!-- Start Service Grid  -->
+                {{-- <div class="col-lg-4 col-xl-3 col-xxl-3 col-md-6 col-sm-6 col-12">
+                    <div class="service-card service-card-5">
+                        <div class="inner">
+                            <div class="icon">
+                                <img src="assets/images/shape/icon-02.png" alt="Shape Images">
+                            </div>
+                            <div class="content">
+                                <h6 class="title"><a href="#">Accounting</a></h6>
+                                <p class="description">40+ Course</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+                <!-- End Service Grid  -->
+
+                <!-- Start Service Grid  -->
+               <!DOCTYPE html>
+<style>
+/* ────── Global Page Spacing ────── */
+body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:#f9f9fb}
+.page-container{padding-left:100px;padding-right:100px;max-width:100%;box-sizing:border-box}
+@media (max-width:992px){.page-container{padding-left:60px;padding-right:60px}}
+@media (max-width:768px){.page-container{padding-left:30px;padding-right:30px}}
+@media (max-width:480px){.page-container{padding-left:16px;padding-right:16px}}
+
+/* ────── User Info Bar ────── */
+.user-info{
+    background:#f5f5f5;padding:12px 0;font:500 .95rem/1.4 sans-serif;
+    color:#333;border-bottom:1px solid #ddd;display:flex;
+    justify-content:space-between;align-items:center;margin-bottom:24px;
+}
+.user-info .time{font-weight:600}
+.user-info .country{font-weight:600;color:#ff7f32}
+
+/* ────── 4-COLUMN GRID (Responsive) ────── */
+.university-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr); /* 4 columns */
+    gap:24px;
+}
+@media (max-width: 1200px){
+    .university-grid{grid-template-columns:repeat(3, 1fr);} /* 3 cols */
+}
+@media (max-width: 900px){
+    .university-grid{grid-template-columns:repeat(2, 1fr);} /* 2 cols */
+}
+@media (max-width: 600px){
+    .university-grid{grid-template-columns:1fr;} /* 1 col */
+}
+
+/* ────── University Card ────── */
+.university-card{
+    background:#fff;border-radius:16px;overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);transition:.3s;
+    display:flex;flex-direction:column;height:100%
+}
+.university-card:hover{transform:translateY(-8px);box-shadow:0 12px 24px rgba(0,0,0,.12)}
+.card-image{position:relative;height:160px}
+.card-image img{width:100%;height:100%;object-fit:cover}
+.card-logo{
+    position:absolute;bottom:-20px;left:16px;width:80px;height:80px;
+    background:#fff;border-radius:12px;padding:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);display:flex;
+    align-items:center;justify-content:center;border:3px solid #ff7f32;
+    overflow:hidden
+}
+.card-logo img{max-width:100%;max-height:100%;object-fit:contain}
+.card-content{flex:1;padding:32px 16px 20px;display:flex;flex-direction:column}
+.card-title{font:600 1.1rem/1.2 sans-serif;color:#0066cc;margin:0 0 8px}
+.card-location{font-size:.9rem;color:#000;margin-bottom:16px;display:flex;align-items:center;gap:6px}
+.card-location svg{width:16px;height:16px;fill:#ff7f32}
+.ranking-badges{display:flex;gap:8px;margin-bottom:auto;flex-wrap:wrap;justify-content:center}
+.badge{
+    background:#e8f5e8;color:#2d7c2d;padding:6px 10px;border-radius:8px;
+    font:600 .75rem/1 sans-serif;min-width:68px;text-align:center;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;height:48px
+}
+.badge.country{background:#fff3e0;color:#e67e22}
+.badge span{display:block;font-size:1.2rem;font-weight:700;line-height:1;margin-bottom:2px}
+
+/* ────── ALL BUTTONS BLUE ────── */
+.find-courses-btn{
+    background:#0066cc;color:#fff;border:none;
+    padding:10px 16px;border-radius:8px;
+    font-weight:600;width:100%;cursor:pointer;
+    transition:.3s
+}
+.find-courses-btn:hover{background:#0055aa}
+
+/* ────── PAGINATION (Blue) ────── */
+.pagination{
+    display:flex;gap:8px;justify-content:center;align-items:center;
+    margin:40px 0 20px;font-weight:600;font-size:.95rem
+}
+.pagination a{
+    display:flex;align-items:center;justify-content:center;
+    width:40px;height:40px;border-radius:12px;
+    text-decoration:none;transition:.2s
+}
+.pagination a.page{
+    border:1px solid #d0e8ff;color:#0066cc
+}
+.pagination a.page:hover{background:#e6f0ff}
+.pagination a.active{
+    background:#0066cc;color:#fff;border:none;font-weight:700
+}
+.pagination a.next{
+    color:#0066cc;border:1px solid #d0e8ff;width:auto;padding:0 16px
+}
+.pagination a.next:hover{background:#e6f0ff}
+.pagination a.next::after{content:" »";margin-left:4px}
+</style>
+
+<div class="page-container">
+
+
+
+  <!-- UNIVERSITY GRID -->
+  <div class="university-grid">
+
+    <!-- University with YOUR SQUARE LOGO -->
+    {{-- <div class="university-card">
+      <div class="card-image">
+        <img src="https://i.ibb.co/9hR5Y3M/global-banking-school.jpg" alt="Cover">
+        <div class="card-logo">
+          <img src="https://crm.educationhub-bd.com/storage/university-logo/20231125134945714481-11.jpg" alt="Square Logo">
+        </div>
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">Global Banking School</h3>
+        <p class="card-location">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          London
+        </p>
+        <div class="ranking-badges">
+          <div class="badge global"><span>0</span> Global(QS)</div>
+          <div class="badge country"><span>0</span> in Country</div>
+        </div>
+        <button class="find-courses-btn">Find Courses</button>
+      </div>
+    </div> --}}
+
+    <!-- Notre Dame (YOUR COVER IMAGE) -->
+    <div class="university-card">
+      <div class="card-image">
+        <img src="https://crm.educationhub-bd.com/storage/university-cover-photo/20240111135245405046-notredame-cover.jpg" alt="Notre Dame">
+        <div class="card-logo"><img src="https://crm.educationhub-bd.com//storage/university-logo/20250513160257251069-Brookes%20logo.jpeg" alt="Logo"></div>
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">Notre Dame University Australia</h3>
+        <p class="card-location">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <b>Location: Durham</b>
+        </p>
+        <div class="ranking-badges">
+          <div class="badge global"><span>39</span> Global(QS)</div>
+          <div class="badge country"><span>1401</span> in Country</div>
+        </div></br>
+        <button class="find-courses-btn">Find Courses</button>
+      </div>
+    </div>
+
+    <!-- Durham University -->
+    <div class="university-card">
+      <div class="card-image">
+        <img src="https://crm.educationhub-bd.com/storage/university-cover-photo/20240111135245405046-notredame-cover.jpg" alt="Durham">
+        <div class="card-logo"><img src="https://crm.educationhub-bd.com//storage/university-logo/20250513160257251069-Brookes%20logo.jpeg" alt="Logo"></div>
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">Durham University</h3>
+        <p class="card-location">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <b>Location: Durham</b>
+        </p>
+        <div class="ranking-badges">
+          <div class="badge global"><span>89</span> Global(QS)</div>
+          <div class="badge country"><span>7</span> in Country</div>
+        </div></br>
+        <button class="find-courses-btn">Find Courses</button>
+      </div>
+    </div>
+
+
+    <div class="university-card">
+      <div class="card-image">
+        <img src="https://crm.educationhub-bd.com/storage/university-cover-photo/20240111135245405046-notredame-cover.jpg" alt="Durham">
+        <div class="card-logo"><img src="https://crm.educationhub-bd.com//storage/university-logo/20250513160257251069-Brookes%20logo.jpeg" alt="Logo"></div>
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">Durham University</h3>
+        <p class="card-location">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+         <b>Location: Durham</b>
+        </p>
+        <div class="ranking-badges">
+          <div class="badge global"><span>89</span> Global(QS)</div>
+          <div class="badge country"><span>7</span> in Country</div>
+        </div></br>
+        <button class="find-courses-btn">Find Courses</button>
+      </div>
+    </div>
+
+    <!-- INTO London -->
+    <div class="university-card">
+      <div class="card-image">
+        <img src="https://crm.educationhub-bd.com/storage/university-cover-photo/20240111135245405046-notredame-cover.jpg" alt="INTO">
+        <div class="card-logo"><img src="https://crm.educationhub-bd.com//storage/university-logo/20250513160257251069-Brookes%20logo.jpeg" alt="Logo"></div>
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">INTO London</h3>
+        <p class="card-location">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+         <b>Location: Durham</b>
+        </p>
+        <div class="ranking-badges">
+          <div class="badge global"><span>100</span> Global(QS)</div>
+          <div class="badge country"><span>17</span> in Country</div>
+        </div></br>
+        <button class="find-courses-btn">Find Courses</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGINATION (All Blue) -->
+  <div class="pagination">
+    <a href="#" class="active">1</a>
+    <a href="#" class="page">2</a>
+    <a href="#" class="page">3</a>
+    <a href="#" class="page">4</a>
+    <a href="#" class="page">5</a>
+    <a href="#" class="page">6</a>
+    <a href="#" class="page">7</a>
+    <a href="#" class="page">8</a>
+    <a href="#" class="page">9</a>
+    <a href="#" class="page">10</a>
+    <a href="#" class="page">17</a>
+    <a href="#" class="page">18</a>
+    <a href="#" class="next">Next</a>
+  </div>
+
+</div>
+</body>
+</html>
+
+            </div>
+                <!-- End Category Box Layout  -->
+
+                <!-- Start  Layout  -->
+    <div class="rbt-about-area about-style-1 bg-color-extra2 rbt-section-gap">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <div class="thumbnail-wrapper">
+                        <div class="thumbnail image-1">
+                            <img data-parallax="{&quot;x&quot;: 0, &quot;y&quot;: -20}" src="{{ asset("assets/images/about/about-01.png") }}" alt="Education Images" style="transform:translate3d(0px, -6.14px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); -webkit-transform:translate3d(0px, -6.14px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); ">
+                        </div>
+                        <div class="thumbnail image-2 d-none d-xl-block">
+                            <img data-parallax="{&quot;x&quot;: 0, &quot;y&quot;: 60}" src="{{ asset("assets/images/about/about-02.png") }}" alt="Education Images" style="transform:translate3d(0px, 15.91px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); -webkit-transform:translate3d(0px, 15.91px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); ">
+                        </div>
+                        <div class="thumbnail image-3 d-none d-md-block">
+                        <img data-parallax="{&quot;x&quot;: 0, &quot;y&quot;: 60}" src="{{ asset("assets/images/about/about-03.png") }}" alt="Education Images" style="transform:translate3d(0px, 15.91px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); -webkit-transform:translate3d(0px, 15.91px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); ">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="inner pl--50 pl_sm--0 pl_md--0">
+                        <div class="section-title text-start">
+                            <span class="subtitle bg-coral-opacity">Know About Us</span>
+                            <h2 class="title">Know About KFM <br> Learning Platform</h2>
+                        </div>
+
+                        <p class="description mt--30">KMF Global Education Ltd transforms students dream to study abroad. It is specialized in providing the guidance to the students to find the right universities and the right courses. KMF Global Education ltd empowers the students to unlock their potentials and achieve their academic excellence.  </p>
+
+                        <!-- Start Feature List  -->
+
+                        <div class="rbt-feature-wrapper mt--20 ml_dec_20">
+                            <div class="rbt-feature feature-style-2 rbt-radius">
+                                <div class="icon bg-pink-opacity">
+                                    <i class="feather-heart"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h6 class="feature-title">Our Mission</h6>
+                                    <p class="feature-description">We strive to provide personalized, reliable, and ethical educational consultancy services, helping students navigate the path to studying abroad with confidence and clarity. Our goal is to connect students with the right institutions and opportunities that align with their ambitions and values.</p>
+                                </div>
+                            </div>
+
+                            <div class="rbt-feature feature-style-2 rbt-radius">
+                                <div class="icon bg-primary-opacity">
+                                    <i class="feather-book"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h6 class="feature-title">Our Vision</h6>
+                                    <p class="feature-description">Personalized, reliable and holistic services turn the student to navigate the right universities and courses with affordable costs. Having a vast network of partner universities, we are providing our services. From choosing the right university to securing your visa and accommodation, we are here to guide you every step of the way.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Feature List  -->
+                        <div class="about-btn mt--40">
+                            <a class="rbt-btn btn-gradient hover-icon-reverse" href="{{ route('book-appointment') }}">
+                                <span class="icon-reverse-wrapper">
+                            <span class="btn-text">APPLAY ONLINE</span>
+                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                <!-- End Start Layout  -->
+
+
+
+
+    <!-- End Services Area  -->
+                        <div class="container">
+                                <div class="row mb--60">
+                                    <div class="col-lg-12">
+                                        <div class="section-title text-center">
+                                            <h2 class="title">&nbsp</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Start Card Area -->
+                                <div class="row row--15 mt_dec--30">
+                                    <div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 col-12 mt--30">
+                                        <div class="section-title text-start">
+                                            <h2 class="title">Our services.</h2>
+                                            <p class="description mt--20">There are many variations of passages of the Ipsum available.</p>
+                                            <div class="read-more-btn">
+                                                <a class="rbt-btn btn-gradient radius rbt-marquee-btn marquee-text-y" href="{{ route('about') }}">
+                                                    <span data-text="About More Us">
+                                            About More Us
+                                        </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Start Service Grid  -->
+                                    <div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 col-12 mt--30">
+                                        <div class="service-card service-card-6 bg-color bg-card-color-1">
+                                            <div class="inner">
+
+                                                <div class="icon">
+
+                                                    <img src="{{ asset('assets/images/shape/service-01.png') }}" alt="Shape Image">
+
+                                                    <img class="opacity_image" src="http://localhost:8000/assets/images/shape/service-01.png" alt="Shape Images">
+
+                                                </div>
+
+                                                <div class="content">
+                                                    <h6 class="title"><a href="{{ route('services.admission') }}">Admission</a></h6>
+                                                    <p class="description">English Learning looking for random paragraphs, you've come to the right place. When a random word.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Service Grid  -->
+
+                                    <!-- Start Service Grid  -->
+                                    <div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 col-12 mt--30">
+                                        <div class="service-card service-card-6 bg-color bg-card-color-2">
+                                            <div class="inner">
+                                                <div class="icon">
+                                                <img src="{{ asset('assets/images/shape/service-04.png') }}" alt="Shape Images">
+                                                <img class="opacity_image" src="{{ asset('assets/images/shape/service-04.png') }}" alt="Shape Images">
+                                                </div>
+
+                                                <div class="content">
+                                                    <h6 class="title"><a href="{{ route('services.scholarship') }}">Scholarships</a></h6>
+                                                    <p class="description">Javascript Learning looking for random paragraphs, you've come to the right place. When a random word.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Service Grid  -->
+
+                                    <!-- Start Service Grid  -->
+                                    <div class="col-lg-4 col-xl-4 col-xxl-4 col-md-6 col-sm-6 col-12 mt--30">
+                                        <div class="service-card service-card-6 bg-color bg-card-color-3">
+                                            <div class="inner">
+                                            <div class="icon">
+                                            <img src="{{ asset('assets/images/shape/service-03.png') }}" alt="Shape Images">
+                                            <img class="opacity_image" src="{{ asset('assets/images/shape/service-03.png') }}" alt="Shape Images">
+                                            </div>
+
+                                                <div class="content">
+                                                    <h6 class="title"><a href="{{ route('services.visa-guidance') }}">Visa Guidance</a></h6>
+                                                    <p class="description">Angular Learning looking for random paragraphs, you've come to the right place. When a random word.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Service Grid  -->
+
+                                    <!-- Start Service Grid  -->
+                                    <div class="col-lg-4 col-xl-4 col-xxl-4 col-md-6 col-sm-6 col-12 mt--30">
+                                        <div class="service-card service-card-6 bg-color bg-card-color-4">
+                                            <div class="inner">
+                                            <div class="icon">
+                                            <img src="{{ asset('assets/images/shape/service-02.png') }}" alt="Shape Images">
+                                            <img class="opacity_image" src="{{ asset('assets/images/shape/service-02.png') }}" alt="Shape Images">_
+                                                </div.
+                                                <div class="content">
+                                                    <h6 class="title"><a href="{{ route('services.departure-guidance') }}">Departure Guidance</a></h6>
+                                                    <p class="description">Php Learning looking for random paragraphs, you've come to the right place. When a random word.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Service Grid  -->
+
+                                    <!-- Start Service Grid  -->
+                                    <div class="col-lg-4 col-xl-4 col-xxl-4 col-md-6 col-sm-6 col-12 mt--30">
+                                        <div class="service-card service-card-6 bg-color bg-card-color-5">
+                                            <div class="inner">
+                                            <div class="icon">
+                                            <img src="{{ asset('assets/images/shape/service-05.png') }}" alt="Shape Images">
+                                                <img class="opacity_image" src="{{ asset('assets/images/shape/service-05.png') }}" alt="Shape Images">
+                                            </div>
+
+                                                <div class="content">
+                                                    <h6 class="title"><a href="{{ route('services.career-counsel') }}">IELTS & Career</a></h6>
+                                                    <p class="description">Spoken english looking for random paragraphs, you've come to the right place. When a random word.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Service Grid  -->
+                                </div>
+                                <!-- End Card Area -->
+                            </div>
+                        <!-- End Services Area  -->
+
+
+
+                        <!-- Start Featured Course Area  -->
+                                        <div class="rbt-featured-course bg-color-white rbt-section-gap">
+                                            <div class="container">
+                                                <div class="row g-5 align-items-end mb--60">
+                                                    <div class="col-lg-6 col-md-12 col-12">
+                                                        <div class="section-title text-start">
+                                                            <h2 class="title">POPULAR COURSES</h2>
+                                                            <p class="description mt--20">Choose Your Desired Course From Our Wide Range Of Courses
+                                    </p>
+                                                        </div>
+                                                    </div>
+                                                    {{-- <div class="col-lg-6 col-md-12 col-12">
+                                                        <div class="load-more-btn text-start text-lg-end">
+                                                            <a class="rbt-btn btn-border icon-hover radius-round" href="#">
+                                                                <span class="btn-text">BROWSE ALL KMF COURSE</span>
+                                                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                                            </a>
+                                                        </div>
+                                                    </div> --}}
+                                                </div>
+
+                                                <!-- Start Card Area -->
+                                                <div class="row g-5">
+                                                    @foreach($courses as $course)
+                                                        <div class="col-lg-4 col-md-6 col-sm-12 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                                            <div class="rbt-card variation-01 rbt-hover">
+                                                                <div class="rbt-card-img">
+                                                                    <a href="{{ route('courseDetails2', [$course->slug ?? $course->id]) }}">
+                                                                        <img src="{{ $course->images ? asset( $course->images) : asset('assets/images/course/course-online-01.jpg') }}" alt="Card image">
+                                                                        @if($course->off_price && $course->current_price)
+                                                                            <div class="rbt-badge-3 bg-white">
+                                                                                <span>-{{ round((1 - ($course->current_price / max(1, $course->off_price))) * 100) }}%</span>
+                                                                        Fl     <span>Off</span>
+                                                                            </div>
+                                                                        @endif
+                                                                    </a>
+                                                                </div>
+                                                                <div class="rbt-card-body">
+                                                                    <div class="rbt-card-top">
+                                                                        <div class="rbt-review">
+                                                                            <div class="rating">
+                                                                                @for($i=0;$i<5;$i++)
+                                                                                    <i class="fas fa-star {{ $i < round($course->rating ?? 0) ? '' : 'text-muted' }}"></i>
+                                                                                @endfor
+                                                                            </div>
+                                                                            <span class="rating-count"> ({{ rand(1,40) }} Reviews)</span>
+                                                                        </div>
+                                                                        <div class="rbt-bookmark-btn">
+                                                                            <a class="rbt-round-btn" title="Bookmark" href="#"><i class="feather-bookmark"></i></a>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <h4 class="rbt-card-title"><a href="{{ route('courseDetails2', [$course->slug ?? $course->id]) }}">{{ $course->course_name }}</a>
+                                                                    </h4>
+
+                                                                    <ul class="rbt-meta">
+                                                                        {{-- <li><i class="feather-book"></i>Subjects</li> --}}
+                                                                        <li><i class="feather-home"></i>{{ $course->university->university_name }} </li>
+                                                                    </ul>
+
+                                                                    {{-- <p class="rbt-card-text">{{ \Illuminate\Support\Str::limit($course->description ?? 'No description available.', 100) }}</p> --}}
+                                                                        <div class="rbt-author-meta mb--10">
+                                                                        {{-- <div class="rbt-avater">
+                                                                            <a href="#">
+                                                                                <img src="{{ optional($course->instructor)->avatar ? asset(optional($course->instructor)->avatar) : asset('assets/images/client/avatar-02.png') }}" alt="{{ optional($course->instructor)->name ?? 'Instructor' }}">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="rbt-author-info">
+                                                                            By <a href="#">{{ optional($course->instructor)->name ?? 'Instructor' }}</a> In <a href="#">{{ optional($course->university)->university_name ?? 'Category' }}</a>
+                                                                        </div> --}}
+                                                                    </div>
+                                                                    <div class="rbt-card-bottom">
+                                                                        {{-- <div class="rbt-price">
+                                                                            <span class="current-price">${{ $course->current_price ?? '0' }}</span>
+                                                                            @if($course->off_price)
+                                                                                <span class="off-price">${{ $course->off_price }}</span>
+                                                                            @endif
+                                                                        </div> --}}
+                                                                        <a class="rbt-btn-link" href="{{ route('courseDetails2', [$course->slug ?? $course->id]) }}">Learn
+                                                                            More<i class="feather-arrow-right"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                                <!-- End Card Area -->
+                                            </div>
+                                        </div>
+    <!-- End Featured Course Area  -->
+<div class="rbt-video-area bg-color-white overflow-hidden">
+            <div class="container">
+                <div class="row mb--60">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <h2 class="title w-600">SIMPLE WORKING TO PROCESS</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row--35 align-items-center mt_dec--50">
+                    <div class="col-xl-5 col-12 mt--50">
+                        <div class="inner">
+
+                            <!-- Start Feature List  -->
+
+                            <div class="rbt-feature-wrapper">
+                                <div class="rbt-feature feature-style-2 rbt-radius">
+                                    <div class="number">
+                                        <span>01</span>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h6 class="feature-title">Make a Decision</h6>
+                                        <p class="feature-description">It is a long established fact that a reader will be distracted by this on readable content.</p>
+                                    </div>
+                                </div>
+
+                                <div class="rbt-feature feature-style-2 rbt-radius">
+                                    <div class="number">
+                                        <span>02</span>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h6 class="feature-title">Schedule a Meeting</h6>
+                                        <p class="feature-description">It is a long established fact that a reader will be distracted by this on readable content.</p>
+                                    </div>
+                                </div>
+
+                                <div class="rbt-feature feature-style-2 rbt-radius">
+                                    <div class="number">
+                                        <span>03</span>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h6 class="feature-title">Show Commitment</h6>
+                                        <p class="feature-description">It is a long established fact that a reader will be distracted by this on readable content.</p>
+                                    </div>
+                                </div>
+
+                                <div class="rbt-feature feature-style-2 rbt-radius">
+                                    <div class="number">
+                                        <span>04</span>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h6 class="feature-title">Transformation Completed</h6>
+                                        <p class="feature-description">It is a long established fact that a reader will be distracted by this on readable content.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- End Feature List  -->
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-12 mt--50">
+                        <div class="video-popup-wrapper version-02">
+                            <img class="w-100 rbt-radius position-relative" src="{{ asset("assets/images/others/video-12.png") }}" alt="Video Images">
+                            <a class="rbt-btn btn-white rounded-player-2 popup-video position-to-top bounced-btn" href="https://www.youtube.com/watch?v=nA1Aqp0sPQo">
+                                <span class="play-icon"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<div class="rbt-section-gap">
+    <div class="rbt-counterup-area bg_image  bg_image_fixed bg_image--20 ptb--170 bg-black-overlay" data-black-overlay="2">
+        <div class="conter-style-2">
+            <div class="container">
+                <div class="row g-5">
+                    <!-- Start Single Counter  -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 single-counter">
+                        <div class="rbt-counterup style-2">
+                            <div class="inner">
+                                <div class="content">
+                                    <h3 class="counter"><span class="odometer" data-count="500">00</span>
+                                    </h3>
+                                    <span class="subtitle">Learners &amp; counting</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Counter  -->
+
+                    <!-- Start Single Counter  -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 single-counter">
+                        <div class="rbt-counterup style-2">
+                            <div class="inner">
+                                <div class="content">
+                                    <h3 class="counter"><span class="odometer" data-count="800">00</span>
+                                    </h3>
+                                    <span class="subtitle">Courses & Video</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Counter  -->
+
+                    <!-- Start Single Counter  -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 single-counter">
+                        <div class="rbt-counterup style-2">
+                            <div class="inner">
+                                <div class="content">
+                                    <h3 class="counter"><span class="odometer" data-count="1000">00</span>
+                                    </h3>
+                                    <span class="subtitle">Certified Students</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Counter  -->
+
+                    <!-- Start Single Counter  -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 single-counter">
+                        <div class="rbt-counterup style-2">
+                            <div class="inner">
+                                <div class="content">
+                                    <h3 class="counter"><span class="odometer" data-count="100">00</span>
+                                    </h3>
+                                    <span class="subtitle">Certified Students</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Counter  -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- Start Student Feedback Counter  -->
+
+  <!-- Start Succsess Stoy Counter  -->
+
+                    <!--<div class="section-title text-center mb--60">-->
+                    <!--    <span class="subtitle bg-secondary-opacity">Contact Us</span>-->
+                    <!--    <h2 class="title">KMF Course Contact <br> can join with us.</h2>-->
+                    <!--</div>-->
+
+                <!--    <div class="col-lg-12">-->
+                <!--    <div class="swiper team-slide-activation rbt-arrow-between rbt-dot-bottom-center swiper-initialized swiper-horizontal swiper-pointer-events">-->
+                <!--        <div class="swiper-wrapper" id="swiper-wrapper-486edb7b3fb2971010" aria-live="polite" style="transform: translate3d(-1335px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" role="group" aria-label="4 / 6" style="width: 415px; margin-right: 30px;">-->
+                <!--                <div class="team team-style--bottom variation-2">-->
+                <!--                    <div class="thumbnail">-->
+                <!--                        <a href="#"><img src="{{ asset('assets/images/team/team-01.JPG') }}" alt="Blog Images"></a>-->
+                <!--                    </div>-->
+                <!--                    <div class="content">-->
+                <!--                        <div class="inner">-->
+                <!--                            <h4 class="title"><a href="#">Aaron M. Griffin</a></h4>-->
+                <!--                            <p class="designation">Depertment Head</p>-->
+                <!--                        </div>-->
+                <!--                        <div class="icon-right">-->
+                <!--                            <a href="#"><i class="feather-arrow-right"></i></a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" role="group" aria-label="5 / 6" style="width: 415px; margin-right: 30px;">-->
+                <!--                <div class="team team-style--bottom variation-2">-->
+                <!--                    <div class="thumbnail">-->
+                <!--                     <a href="#">-->
+                <!--                         <img src="{{ asset('assets/images/team/team-01.jpg') }}" alt="Team Image">-->
+                <!--                     </a>-->
+                <!--                    </div>-->
+
+                <!--                    <div class="content">-->
+                <!--                        <div class="inner">-->
+                <!--                            <h4 class="title"><a href="#">Aaron M. Griffin</a></h4>-->
+                <!--                            <p class="designation">Depertment Head</p>-->
+                <!--                        </div>-->
+                <!--                        <div class="icon-right">-->
+                <!--                            <a href="#"><i class="feather-arrow-right"></i></a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div><div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="5" role="group" aria-label="6 / 6" style="width: 415px; margin-right: 30px;">-->
+                <!--                <div class="team team-style--bottom variation-2">-->
+                <!--                    <div class="thumbnail">-->
+                <!--                        <a href="#"><img src="assets/images/team/team-01.jpg" alt="Blog Images"></a>-->
+                <!--                    </div>-->
+                <!--                    <div class="content">-->
+                <!--                        <div class="inner">-->
+                <!--                            <h4 class="title"><a href="#">Aaron M. Griffin</a></h4>-->
+                <!--                            <p class="designation">Depertment Head</p>-->
+                <!--                        </div>-->
+                <!--                        <div class="icon-right">-->
+                <!--                            <a href="#"><i class="feather-arrow-right"></i></a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--            <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="0" role="group" aria-label="1 / 6" style="width: 415px; margin-right: 30px;">-->
+                <!--                <div class="team team-style--bottom variation-2">-->
+                <!--                    <div class="thumbnail">-->
+                <!--                        <a href="#"><img src="{{ asset('assets/images/team/team-01.JPG') }}" alt="Blog Images"></a>-->
+                <!--                    </div>-->
+                <!--                    <div class="content">-->
+                <!--                        <div class="inner">-->
+                <!--                            <h4 class="title"><a href="#">Aaron M. Griffin</a></h4>-->
+                <!--                            <p class="designation">Depertment Head</p>-->
+                <!--                        </div>-->
+                <!--                        <div class="icon-right">-->
+                <!--                            <a href="#"><i class="feather-arrow-right"></i></a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--            <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" role="group" aria-label="2 / 6" style="width: 415px; margin-right: 30px;">-->
+                <!--                <div class="team team-style--bottom variation-2">-->
+                <!--                    <div class="thumbnail">-->
+                <!--                        <a href="#"><img src="{{ asset('assets/images/team/team-01.JPG') }}" alt="Blog Images"></a>-->
+                <!--                    </div>-->
+                <!--                    <div class="content">-->
+                <!--                        <div class="inner">-->
+                <!--                            <h4 class="title"><a href="#">John Due</a></h4>-->
+                <!--                            <p class="designation">Depertment Head</p>-->
+                <!--                        </div>-->
+                <!--                        <div class="icon-right">-->
+                <!--                            <a href="#"><i class="feather-arrow-right"></i></a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--            <div class="swiper-slide" data-swiper-slide-index="2" role="group" aria-label="3 / 6" style="width: 415px; margin-right: 30px;">-->
+                <!--                <div class="team team-style--bottom variation-2">-->
+                <!--                    <div class="thumbnail">-->
+                <!--                        <a href="#"><img src="{{ asset('assets/images/team/team-01.JPG') }}" alt="Blog Images"></a>-->
+                <!--                    </div>-->
+                <!--                    <div class="content">-->
+                <!--                        <div class="inner">-->
+                <!--                            <h4 class="title"><a href="#">Griffin DM</a></h4>-->
+                <!--                            <p class="designation">Depertment Head</p>-->
+                <!--                        </div>-->
+                <!--                        <div class="icon-right">-->
+                <!--                            <a href="#"><i class="feather-arrow-right"></i></a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--            <div class="swiper-slide" data-swiper-slide-index="3" role="group" aria-label="4 / 6" style="width: 415px; margin-right: 30px;">-->
+                <!--                <div class="team team-style--bottom variation-2">-->
+                <!--                    <div class="thumbnail">-->
+                <!--                        <a href="#"><img src="{{ asset('assets/images/team/team-01.JPG') }}" alt="Blog Images"></a>-->
+                <!--                    </div>-->
+                <!--                    <div class="content">-->
+                <!--                        <div class="inner">-->
+                <!--                            <h4 class="title"><a href="#">Aaron M. Griffin</a></h4>-->
+                <!--                            <p class="designation">Depertment Head</p>-->
+                <!--                        </div>-->
+                <!--                        <div class="icon-right">-->
+                <!--                            <a href="#"><i class="feather-arrow-right"></i></a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--            <div class="swiper-slide" data-swiper-slide-index="4" role="group" aria-label="5 / 6" style="width: 415px; margin-right: 30px;">-->
+                <!--                <div class="team team-style--bottom variation-2">-->
+                <!--                    <div class="thumbnail">-->
+                <!--                        <a href="#"><img src="{{ asset('assets/images/team/team-01.JPG') }}" alt="Blog Images"></a>-->
+                <!--                    </div>-->
+                <!--                    <div class="content">-->
+                <!--                        <div class="inner">-->
+                <!--                            <h4 class="title"><a href="#">Aaron M. Griffin</a></h4>-->
+                <!--                            <p class="designation">Depertment Head</p>-->
+                <!--                        </div>-->
+                <!--                        <div class="icon-right">-->
+                <!--                            <a href="#"><i class="feather-arrow-right"></i></a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--            <div class="swiper-slide swiper-slide-duplicate-prev" data-swiper-slide-index="5" role="group" aria-label="6 / 6" style="width: 415px; margin-right: 30px;">-->
+                <!--                <div class="team team-style--bottom variation-2">-->
+                <!--                    <div class="thumbnail">-->
+                <!--                        <a href="#"><img src="{{ asset('assets/images/team/team-01.JPG') }}" alt="Blog Images"></a>-->
+                <!--                    </div>-->
+                <!--                    <div class="content">-->
+                <!--                        <div class="inner">-->
+                <!--                            <h4 class="title"><a href="#">Aaron M. Griffin</a></h4>-->
+                <!--                            <p class="designation">Depertment Head</p>-->
+                <!--                        </div>-->
+                <!--                        <div class="icon-right">-->
+                <!--                            <a href="#"><i class="feather-arrow-right"></i></a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--        <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="0" role="group" aria-label="1 / 6" style="width: 415px; margin-right: 30px;">-->
+                <!--                <div class="team team-style--bottom variation-2">-->
+                <!--                    <div class="thumbnail">-->
+                <!--                        <a href="#"><img src="{{ asset('assets/images/team/team-01.JPG') }}" alt="Blog Images"></a>-->
+                <!--                    </div>-->
+                <!--                    <div class="content">-->
+                <!--                        <div class="inner">-->
+                <!--                            <h4 class="title"><a href="#">Aaron M. Griffin</a></h4>-->
+                <!--                            <p class="designation">Depertment Head</p>-->
+                <!--                        </div>-->
+                <!--                        <div class="icon-right">-->
+                <!--                            <a href="#"><i class="feather-arrow-right"></i></a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="1" role="group" aria-label="2 / 6" style="width: 415px; margin-right: 30px;">-->
+                <!--                <div class="team team-style--bottom variation-2">-->
+                <!--                    <div class="thumbnail">-->
+                <!--                        <a href="#"><img src="{{ asset('assets/images/team/team-01.JPG') }}" alt="Blog Images"></a>-->
+                <!--                    </div>-->
+                <!--                    <div class="content">-->
+                <!--                        <div class="inner">-->
+                <!--                            <h4 class="title"><a href="#">John Due</a></h4>-->
+                <!--                            <p class="designation">Depertment Head</p>-->
+                <!--                        </div>-->
+                <!--                        <div class="icon-right">-->
+                <!--                            <a href="#"><i class="feather-arrow-right"></i></a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" role="group" aria-label="3 / 6" style="width: 415px; margin-right: 30px;">-->
+                <!--                <div class="team team-style--bottom variation-2">-->
+                <!--                    <div class="thumbnail">-->
+                <!--                        <a href="#"><img src="{{ asset('assets/images/team/team-01.JPG') }}" alt="Blog Images"></a>-->
+                <!--                    </div>-->
+                <!--                    <div class="content">-->
+                <!--                        <div class="inner">-->
+                <!--                            <h4 class="title"><a href="#">Griffin DM</a></h4>-->
+                <!--                            <p class="designation">Depertment Head</p>-->
+                <!--                        </div>-->
+                <!--                        <div class="icon-right">-->
+                <!--                            <a href="#"><i class="feather-arrow-right"></i></a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div></div>-->
+
+                <!--        <div class="rbt-swiper-arrow rbt-arrow-left" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-486edb7b3fb2971010">-->
+                <!--            <div class="custom-overfolow">-->
+                <!--                <i class="rbt-icon feather-arrow-left"></i>-->
+                <!--                <i class="rbt-icon-top feather-arrow-left"></i>-->
+                <!--            </div>-->
+                <!--        </div>-->
+
+                <!--        <div class="rbt-swiper-arrow rbt-arrow-right" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-486edb7b3fb2971010">-->
+                <!--            <div class="custom-overfolow">-->
+                <!--                <i class="rbt-icon feather-arrow-right"></i>-->
+                <!--                <i class="rbt-icon-top feather-arrow-right"></i>-->
+                <!--            </div>-->
+                <!--        </div>-->
+
+
+                <!--        <div class="rbt-swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6"></span></div>-->
+                <!--    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>-->
+                <!--</div>-->
+
+    <!-- Start Succsess Stoy Counter  -->
+
+
+    <div class="rbt-testimonial-area bg-color-extra2 rbt-section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb--60">
+                    <div class="section-title text-center">
+                        <h2 class="title">STUDENT'S FEEDBACK</h2>
+                        <p class="description mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our histudy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-item-3-activation swiper rbt-arrow-between gutter-swiper-30">
+                <div class="swiper-wrapper">
+                    @foreach($testimonials as $testimonial)
+                    <!-- Start Single Testimonial  -->
+                    <div class="swiper-slide">
+                        <div class="single-slide">
+                            <div class="rbt-testimonial-box">
+                                <div class="inner bg-no-shadow bg-color-primary-opacity">
+                                    <div class="clint-info-wrapper">
+                                        <div class="thumb">
+                                            <img src="{{ $testimonial->image ? asset($testimonial->image) : asset('assets/images/testimonial/client-01.png') }}" alt="Clint Images">
+                                        </div>
+                                        <div class="client-info">
+                                            <h5 class="title">{{ $testimonial->name }}</h5>
+                                            <span>{{ $testimonial->designation ?? 'Student' }} <i>{{ $testimonial->company ?? '@ Company' }}</i></span>
+                                        </div>
+                                    </div>
+                                    <div class="description">
+                                        <p class="subtitle-3">{!! Str::limit($testimonial->description ?? $testimonial->review, 150) !!}</p>
+                                        <div class="rating mt--20">
+                                            @for($i=0;$i<5;$i++)
+                                                <a href="#"><i class="fa fa-star {{ $i < round((float)($testimonial->review ?? 5)) ? '' : 'text-muted' }}"></i></a>
+                                            @endfor
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Testimonial  -->
+                    @endforeach
+                </div>
+
+                <div class="rbt-swiper-arrow rbt-arrow-left">
+                    <div class="custom-overfolow">
+                        <i class="rbt-icon feather-arrow-left"></i>
+                        <i class="rbt-icon-top feather-arrow-left"></i>
+                    </div>
+                </div>
+
+                <div class="rbt-swiper-arrow rbt-arrow-right">
+                    <div class="custom-overfolow">
+                        <i class="rbt-icon feather-arrow-right"></i>
+                        <i class="rbt-icon-top feather-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- End Student Feedback Counter  -->
+
+     <div class="rbt-ready-area ready-section-01 rbt-section-gap rbt-section-box bg_image--29 bg_image">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <span class="subtitle bg-primary-opacity">Ready to start?</span>
+                            <h2 class="title w-600">SELF DEVELOPMENT COURSE</h2>
+                            <p class="mt--10 description">We believe that we have the power to shape the <br> future, for the better lifelong</p>
+                            <a class="rbt-btn btn-gradient hover-icon-reverse" href="#">
+                                <span class="icon-reverse-wrapper">
+                                    <span class="btn-text">Let’s Talk</span>
+                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Start Faqs -->
+<div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="rbt-accordion-style accordion">
+                        <div class="section-title text-start mb--60">
+                            <h4 class="title">Frequestly Asked Questions</h4>
+                        </div>
+                        <div class="rbt-accordion-style rbt-accordion-04 accordion">
+                            <div class="accordion" id="accordionExamplec3">
+                                <div class="accordion-item card">
+                                    <h2 class="accordion-header card-header" id="headingThree1">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
+                                            What is Histudy ? How does it work?
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree1" class="accordion-collapse collapse" aria-labelledby="headingThree1" data-bs-parent="#accordionExamplec3" style="">
+                                        <div class="accordion-body card-body">
+                                            You can run Histudy easily. Any School, University, College can be use this histudy education template for their educational purpose. A university can be run their online leaning management system by histudy education template.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item card">
+                                    <h2 class="accordion-header card-header" id="headingThree2">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
+                                            How can I get the customer support?
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree2" class="accordion-collapse collapse" aria-labelledby="headingThree2" data-bs-parent="#accordionExamplec3">
+                                        <div class="accordion-body card-body">
+                                            After purchasing the product need you any support you can be share with
+                                            us with sending mail to pixcelsthemes@gmail.com.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item card">
+                                    <h2 class="accordion-header card-header" id="headingThree3">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
+                                            Can I get update regularly and For how long do I get updates?
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree3" class="accordion-collapse collapse" aria-labelledby="headingThree3" data-bs-parent="#accordionExamplec3">
+                                        <div class="accordion-body card-body">
+                                            Yes, We will get update the Histudy. And you can get it any time. Next
+                                            time we will comes with more feature. You can be get update for
+                                            unlimited times. Our dedicated team works for update.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item card">
+                                    <h2 class="accordion-header card-header" id="headingThree4">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree4" aria-expanded="false" aria-controls="collapseThree4">
+                                            15 Things To Know About Education?
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree4" class="accordion-collapse collapse" aria-labelledby="headingThree4" data-bs-parent="#accordionExamplec3">
+                                        <div class="accordion-body card-body">
+                                            If you're looking for random paragraphs, you've come to the right place. When a random word or a random sentence isn't quite enough, the next logical step is to find a random paragraph.
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="rbt-accordion-style accordion">
+                        <div class="section-title text-start mb--60">
+                            <h4 class="title">&nbsp;</h4>
+                        </div>
+                        <div class="rbt-accordion-style rbt-accordion-04 accordion">
+                            <div class="accordion" id="faqs-accordionExamplec3">
+                                <div class="accordion-item card">
+                                    <h2 class="accordion-header card-header" id="faqs-headingThree1">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqs-collapseThree1" aria-expanded="true" aria-controls="faqs-collapseThree1">
+                                            What is Histudy ? How does it work?
+                                        </button>
+                                    </h2>
+
+                                    <div id="faqs-collapseThree1" class="accordion-collapse collapse show" aria-labelledby="faqs-headingThree1" data-bs-parent="#faqs-accordionExamplec3">
+                                        <div class="accordion-body card-body">
+                                            You can run Histudy easily. Any School, University, College can be use this histudy education template for their educational purpose. A university can be run their online leaning management system by histudy education template.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item card">
+                                    <h2 class="accordion-header card-header" id="faqs-headingThree2">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqs-collapseThree2" aria-expanded="false" aria-controls="faqs-collapseThree2">
+                                            7 Facts About Education That Will Blow
+                                        </button>
+                                    </h2>
+                                    <div id="faqs-collapseThree2" class="accordion-collapse collapse" aria-labelledby="faqs-headingThree2" data-bs-parent="#faqs-accordionExamplec3">
+                                        <div class="accordion-body card-body">
+                                            After purchasing the product need you any support you can be share with
+                                            us with sending mail to pixcelsthemes@gmail.com.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item card">
+                                    <h2 class="accordion-header card-header" id="faqs-headingThree3">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqs-collapseThree3" aria-expanded="false" aria-controls="faqs-collapseThree3">
+                                            10 Brilliant Ways To Advertise Education
+                                        </button>
+                                    </h2>
+                                    <div id="faqs-collapseThree3" class="accordion-collapse collapse" aria-labelledby="faqs-headingThree3" data-bs-parent="#faqs-accordionExamplec3">
+                                        <div class="accordion-body card-body">
+                                            Yes, We will get update the Histudy. And you can get it any time. Next
+                                            time we will comes with more feature. You can be get update for
+                                            unlimited times. Our dedicated team works for update.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item card">
+                                    <h2 class="accordion-header card-header" id="faqs-headingThree4">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqs-collapseThree4" aria-expanded="false" aria-controls="faqs-collapseThree4">
+                                            15 Common Myths About Education
+                                        </button>
+                                    </h2>
+                                    <div id="faqs-collapseThree4" class="accordion-collapse collapse" aria-labelledby="faqs-headingThree4" data-bs-parent="#faqs-accordionExamplec3">
+                                        <div class="accordion-body card-body">
+                                            If you're looking for random paragraphs, you've come to the right place. When a random word or a random sentence isn't quite enough, the next logical step is to find a random paragraph.
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Close Faqs -->
+    </br>
+
+
+    <!-- Start Newsletter Area  -->
+
+    <!-- End Newsletter Area  -->
+
+
+
+
+
+
+
+
+     @include('frontend-partials.footer')
+
+    <!-- End Copyright Area  -->
+
+@endsection
