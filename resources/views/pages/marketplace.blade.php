@@ -13152,18 +13152,18 @@
         </div>
         <!-- Start Card Area -->
         <div class="row row--15 mt_dec--30">
-            <div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 col-12 mt--30">
-                <div class="section-title text-start">
-                    <h2 class="title">Our services.</h2>
+            <div class="col-lg-12 col-12 mt--30">
+                <div class="section-title text-center">
+                    <h2 class="title">Our Services</h2>
                     <p class="description mt--20">There are many variations of passages of the Ipsum available.</p>
-                    <div class="read-more-btn">
+                    {{-- <div class="read-more-btn">
                         <a class="rbt-btn btn-gradient radius rbt-marquee-btn marquee-text-y"
                             href="{{ route('about') }}">
                             <span data-text="About More Us">
                                 About More Us
                             </span>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
