@@ -12044,6 +12044,17 @@
                 opacity: 0.3;
             }
         }
+        .popular-destinations-section {
+            padding: 0px !important;
+        }
+        .rbt-section-gap {
+           padding: 0px !important; /*120px 0; */
+        }
+
+        .rbt-video-area {
+            margin-top:70px;
+        }
+                
     </style>
 
     <div class="sticky-consult" role="button" tabindex="0" aria-label="Book experts counselling"
