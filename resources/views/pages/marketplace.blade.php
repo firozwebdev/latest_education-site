@@ -13441,7 +13441,7 @@
     <div class="rbt-video-area bg-color-white overflow-hidden">
         <div class="container" >
             <div class="row mb--60">
-                <div class="col-lg-12" style="margin-top:70px;">
+                <div class="col-lg-12">
                     <div class="section-title text-center">
                         <h2 class="title w-600">How We Simplify The Process</h2>
                     </div>
@@ -14199,6 +14199,8 @@
     <!--</div>-->
 
     <!-- Start Succsess Stoy Counter  -->
+
+
 
 
 

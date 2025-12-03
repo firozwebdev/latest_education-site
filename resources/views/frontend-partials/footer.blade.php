@@ -108,7 +108,7 @@
     ->paginate(12, ['*'], 'footer_page');
     @endphp
     <!-- Start Succsess Stoy Counter  -->
-    <div class="rbt-category-area bg-color-white rbt-section-gapTop">
+    <div class="rbt-category-area bg-color-white rbt-section-gapTop" style="padding:30px 0 !important;">
         <div class="container">
             <div class="row g-5">
 
@@ -236,281 +236,144 @@
                         </div>
                     </div>
                 </div> --}}
-                <!-- Start Faqs -->
-                <div class="container rbt-section-gap">
-                    <div class="row g-5">
-                        <div class="col-lg-6">
-                            <div class="rbt-accordion-style accordion faq-section">
-                                    <style>
-                                        /* Footer FAQ improvements - scoped to this section */
-                                        .faq-section .section-title .subtitle {
-                                            display: inline-block;
-                                            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                                            -webkit-background-clip: text;
-                                            -webkit-text-fill-color: transparent;
-                                            font-weight: 700;
-                                            text-transform: uppercase;
-                                            letter-spacing: 1px;
-                                            font-size: 12px;
-                                        }
-
-                                        .faq-section .section-title .title {
-                                            font-size: 22px;
-                                            font-weight: 800;
-                                            margin-bottom: 8px;
-                                        }
-
-                                        .faq-section .section-title .description {
-                                            color: #666;
-                                            margin-bottom: 22px;
-                                            font-size: 14px;
-                                        }
-
-                                        .faq-section .accordion-item.card {
-                                            border: 0;
-                                            border-radius: 12px;
-                                            /* Allow expanded content to be visible (don't clip) */
-                                            overflow: visible;
-                                            margin-bottom: 12px;
-                                            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-                                        }
-
-                                        .faq-section .accordion-header .accordion-button {
-                                            background: #fff;
-                                            border: none;
-                                            padding: 18px 20px;
-                                            font-weight: 700;
-                                            color: #222;
-                                            border-radius: 0;
-                                            box-shadow: none;
-                                        }
-
-                                        .faq-section .accordion-button:focus {
-                                            box-shadow: 0 0 0 3px rgba(102,126,234,0.08);
-                                        }
-
-                                        .faq-section .accordion-button i {
-                                            transition: transform 0.25s ease;
-                                            font-size: 18px;
-                                            color: #667eea;
-                                        }
-
-                                        .faq-section .accordion-button:not(.collapsed) i {
-                                            transform: rotate(180deg);
-                                        }
-
-                                        .faq-section .accordion-body.card-body {
-                                            background: #fafafa;
-                                            padding: 18px 20px;
-                                            color: #444;
-                                            line-height: 1.6;
-                                        }
-
-                                        /* Ensure Bootstrap collapse/show display isn't overridden by other styles */
-                                        .faq-section .accordion-collapse.collapse {
-                                            display: none;
-                                        }
-
-                                        .faq-section .accordion-collapse.collapse.show {
-                                            display: block !important;
-                                        }
-
-                                        .faq-section .accordion-body.card-body {
-                                            visibility: visible;
-                                            opacity: 1;
-                                        }
-
-                                        @media (max-width: 768px) {
-                                            .faq-section .section-title .title { font-size: 20px; }
-                                            .faq-section .accordion-header .accordion-button { padding: 14px 16px; }
-                                        }
-                                        /* Also apply safe collapse/display rules to any other local accordion blocks
-                                           (right column uses plain rbt-accordion-style). This ensures the same
-                                           expanded behavior for both columns. */
-                                        .rbt-accordion-style.accordion .accordion-item.card { overflow: visible; }
-                                        .rbt-accordion-style.accordion .accordion-collapse.collapse { display: none; }
-                                        .rbt-accordion-style.accordion .accordion-collapse.collapse.show { display: block !important; }
-                                        .rbt-accordion-style.accordion .accordion-body.card-body { visibility: visible; opacity: 1; background: #fafafa; padding: 18px 20px; color: #444; }
-                                    </style>
-
-                                    <div class="section-title text-start mb--40">
-                                        <span class="subtitle">FAQs</span>
-                                        <h4 class="title">Frequently Asked Questions</h4>
-                                        <p class="description">Answers to common questions about our services, support and how Histudy works.</p>
-                                    </div>
-                                <div class="rbt-accordion-style rbt-accordion-04 accordion">
-                                    <div class="accordion" id="accordionExamplec3">
-                                        <div class="accordion-item card">
-                                            <h2 class="accordion-header card-header" id="headingThree1">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree1"
-                                                    aria-expanded="false" aria-controls="collapseThree1">
-                                                    What is Histudy ? How does it work?
-                                                </button>
-                                            </h2>
-                                            <div id="collapseThree1" class="accordion-collapse collapse"
-                                                aria-labelledby="headingThree1" data-bs-parent="#accordionExamplec3"
-                                                style="">
-                                                <div class="accordion-body card-body">
-                                                    You can run Histudy easily. Any School, University, College can be use
-                                                    this histudy education template for their educational purpose. A
-                                                    university can be run their online leaning management system by histudy
-                                                    education template.
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-item card">
-                                            <h2 class="accordion-header card-header" id="headingThree2">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree2"
-                                                    aria-expanded="false" aria-controls="collapseThree2">
-                                                    How can I get the customer support?
-                                                </button>
-                                            </h2>
-                                            <div id="collapseThree2" class="accordion-collapse collapse"
-                                                aria-labelledby="headingThree2" data-bs-parent="#accordionExamplec3">
-                                                <div class="accordion-body card-body">
-                                                    After purchasing the product need you any support you can be share with
-                                                    us with sending mail to pixcelsthemes@gmail.com.
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-item card">
-                                            <h2 class="accordion-header card-header" id="headingThree3">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree3"
-                                                    aria-expanded="false" aria-controls="collapseThree3">
-                                                    Can I get update regularly and For how long do I get updates?
-                                                </button>
-                                            </h2>
-                                            <div id="collapseThree3" class="accordion-collapse collapse"
-                                                aria-labelledby="headingThree3" data-bs-parent="#accordionExamplec3">
-                                                <div class="accordion-body card-body">
-                                                    Yes, We will get update the Histudy. And you can get it any time. Next
-                                                    time we will comes with more feature. You can be get update for
-                                                    unlimited times. Our dedicated team works for update.
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-item card">
-                                            <h2 class="accordion-header card-header" id="headingThree4">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree4"
-                                                    aria-expanded="false" aria-controls="collapseThree4">
-                                                    15 Things To Know About Education?
-                                                </button>
-                                            </h2>
-                                            <div id="collapseThree4" class="accordion-collapse collapse"
-                                                aria-labelledby="headingThree4" data-bs-parent="#accordionExamplec3">
-                                                <div class="accordion-body card-body">
-                                                    If you're looking for random paragraphs, you've come to the right place.
-                                                    When a random word or a random sentence isn't quite enough, the next
-                                                    logical step is to find a random paragraph.
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                <!-- Start FAQs Section -->
+                <div class="rbt-accordion-area  bg-color-white" style="margin-top:10px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-10 offset-lg-1">
+                                <div class="section-title text-center mb--60">
+                                    <span class="subtitle bg-secondary-opacity">HAVE QUESTIONS?</span>
+                                    <h2 class="title">Frequently Asked Questions</h2>
+                                    <p class="description mt--20">Find answers to the most common questions about our
+                                        marketplace and services.</p>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-lg-6">
-                            <div class="rbt-accordion-style accordion">
-                                <div class="section-title text-start mb--60">
-                                    <h4 class="title">&nbsp;</h4>
-                                </div>
+                        <div class="row g-5">
+                            <div class="col-lg-10 offset-lg-1">
                                 <div class="rbt-accordion-style rbt-accordion-04 accordion">
-                                    <div class="accordion" id="faqs-accordionExamplec3">
-                                        <div class="accordion-item card">
-                                            <h2 class="accordion-header card-header" id="faqs-headingThree1">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#faqs-collapseThree1"
-                                                    aria-expanded="false" aria-controls="faqs-collapseThree1">
-                                                    What is Histudy ? How does it work?
-                                                </button>
-                                            </h2>
-
-                                            <div id="faqs-collapseThree1" class="accordion-collapse collapse"
-                                                aria-labelledby="faqs-headingThree1"
-                                                data-bs-parent="#faqs-accordionExamplec3">
-                                                <div class="accordion-body card-body">
-                                                    You can run Histudy easily. Any School, University, College can be use
-                                                    this histudy education template for their educational purpose. A
-                                                    university can be run their online leaning management system by histudy
-                                                    education template.
-                                                </div>
+                                    <div class="accordion" id="accordionMarketplace">
+                                        <div class="faq-item">
+                                            <div class="faq-question" onclick="toggleFaq(this)">
+                                                <span>What is the marketplace and how does it work?</span>
+                                                <i class="fas fa-plus"></i>
+                                            </div>
+                                            <div class="faq-answer">
+                                                Our marketplace is a comprehensive platform that connects students with educational institutions, courses, and services. You can browse through various programs, compare options, and apply directly through our streamlined process.
                                             </div>
                                         </div>
 
-                                        <div class="accordion-item card">
-                                            <h2 class="accordion-header card-header" id="faqs-headingThree2">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#faqs-collapseThree2"
-                                                    aria-expanded="false" aria-controls="faqs-collapseThree2">
-                                                    7 Facts About Education That Will Blow
-                                                </button>
-                                            </h2>
-                                            <div id="faqs-collapseThree2" class="accordion-collapse collapse"
-                                                aria-labelledby="faqs-headingThree2"
-                                                data-bs-parent="#faqs-accordionExamplec3">
-                                                <div class="accordion-body card-body">
-                                                    After purchasing the product need you any support you can be share with
-                                                    us with sending mail to pixcelsthemes@gmail.com.
-                                                </div>
+                                        <div class="faq-item">
+                                            <div class="faq-question" onclick="toggleFaq(this)">
+                                                <span>How can I apply for courses through the marketplace?</span>
+                                                <i class="fas fa-plus"></i>
+                                            </div>
+                                            <div class="faq-answer">
+                                                Simply browse our course catalog, select the program that interests you, and click the "Apply Now" button. You'll be guided through a step-by-step application process with all necessary documentation requirements clearly outlined.
                                             </div>
                                         </div>
 
-                                        <div class="accordion-item card">
-                                            <h2 class="accordion-header card-header" id="faqs-headingThree3">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#faqs-collapseThree3"
-                                                    aria-expanded="false" aria-controls="faqs-collapseThree3">
-                                                    10 Brilliant Ways To Advertise Education
-                                                </button>
-                                            </h2>
-                                            <div id="faqs-collapseThree3" class="accordion-collapse collapse"
-                                                aria-labelledby="faqs-headingThree3"
-                                                data-bs-parent="#faqs-accordionExamplec3">
-                                                <div class="accordion-body card-body">
-                                                    Yes, We will get update the Histudy. And you can get it any time. Next
-                                                    time we will comes with more feature. You can be get update for
-                                                    unlimited times. Our dedicated team works for update.
-                                                </div>
+                                        <div class="faq-item">
+                                            <div class="faq-question" onclick="toggleFaq(this)">
+                                                <span>What support services do you provide?</span>
+                                                <i class="fas fa-plus"></i>
+                                            </div>
+                                            <div class="faq-answer">
+                                                We offer comprehensive support including academic counseling, visa assistance, accommodation guidance, and ongoing student support throughout your educational journey. Our expert advisors are available to help you every step of the way.
                                             </div>
                                         </div>
 
-                                        <div class="accordion-item card">
-                                            <h2 class="accordion-header card-header" id="faqs-headingThree4">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#faqs-collapseThree4"
-                                                    aria-expanded="false" aria-controls="faqs-collapseThree4">
-                                                    15 Common Myths About Education
-                                                </button>
-                                            </h2>
-                                            <div id="faqs-collapseThree4" class="accordion-collapse collapse"
-                                                aria-labelledby="faqs-headingThree4"
-                                                data-bs-parent="#faqs-accordionExamplec3">
-                                                <div class="accordion-body card-body">
-                                                    If you're looking for random paragraphs, you've come to the right place.
-                                                    When a random word or a random sentence isn't quite enough, the next
-                                                    logical step is to find a random paragraph.
-                                                </div>
+                                        <div class="faq-item">
+                                            <div class="faq-question" onclick="toggleFaq(this)">
+                                                <span>Are there any fees for using the marketplace?</span>
+                                                <i class="fas fa-plus"></i>
+                                            </div>
+                                            <div class="faq-answer">
+                                                Browsing and searching through our marketplace is completely free. We only charge service fees for successful applications and additional support services, which are clearly outlined before you proceed with any paid services.
                                             </div>
                                         </div>
 
+                                        <div class="faq-item">
+                                            <div class="faq-question" onclick="toggleFaq(this)">
+                                                <span>How do I track my application status?</span>
+                                                <i class="fas fa-plus"></i>
+                                            </div>
+                                            <div class="faq-answer">
+                                                Once you submit an application, you'll receive a unique tracking ID and access to your personal dashboard where you can monitor the progress of all your applications in real-time, receive updates, and communicate with institutions directly.
+                                            </div>
+                                        </div>
+
+                                        <div class="faq-item">
+                                            <div class="faq-question" onclick="toggleFaq(this)">
+                                                <span>What if I need help choosing the right program?</span>
+                                                <i class="fas fa-plus"></i>
+                                            </div>
+                                            <div class="faq-answer">
+                                                Our expert education counselors are here to help! You can schedule a free consultation to discuss your goals, preferences, and requirements. We'll provide personalized recommendations based on your academic background and career aspirations.
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- End FAQs Section -->
+                <style>
+                .faq-item {
+                    border: 1px solid #e0e0e0;
+                    border-radius: 8px;
+                    margin-bottom: 10px;
+                    overflow: hidden;
+                }
+                .faq-question {
+                    padding: 20px;
+                    background: #f8f9fa;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-weight: 600;
+                    transition: background 0.3s;
+                }
+                .faq-question:hover {
+                    background: #e9ecef;
+                }
+                .faq-answer {
+                    padding: 0 20px;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+                    background: white;
+                }
+                .faq-answer.active {
+                    padding: 20px;
+                    max-height: 200px;
+                }
+                .faq-question i {
+                    transition: transform 0.3s;
+                }
+                .faq-question.active i {
+                    transform: rotate(45deg);
+                }
+                </style>
+                <script>
+                function toggleFaq(element) {
+                    const answer = element.nextElementSibling;
+                    const icon = element.querySelector('i');
+                    
+                    document.querySelectorAll('.faq-answer').forEach(ans => {
+                        if (ans !== answer) {
+                            ans.classList.remove('active');
+                            ans.previousElementSibling.classList.remove('active');
+                        }
+                    });
+                    
+                    answer.classList.toggle('active');
+                    element.classList.toggle('active');
+                }
+                </script>
             </div>
-
-            <!-- Start Faqs -->
 
         </div>
     </div>
@@ -1264,11 +1127,11 @@
 
     <div class="rbt-newsletter-area newsletter-style-2 bg-color-primary rbt-section-gap">
         <div class="container">
-            <div class="row row--15 align-items-center">
+            <div class="row row--15 align-items-center" style="padding-top:20px;">
                 <div class="col-lg-12">
                     <div class="inner text-center">
                         <div class="section-title text-center">
-                            <span class="subtitle bg-white-opacity">SUBSCRIBE TO OUR NEWSLETTER</span>
+                            
                             <h2 class="title color-white"><strong>SUBSCRIBE TO OUR NEWSLETTER</h2>
                         </div>
                         <form id="footer-newsletter-form" class="newsletter-form-1 mt--40">
@@ -1324,7 +1187,7 @@
 
     <!-- End Newsletter Area  -->
 
-    <div class="mt--80">
+    <div class="mt--40">
         <div class="rbt-brand-title-wrap">
             <h5 class="rbt-brand-title w-600 text-center mb-0">Partner <span class="theme-gradient">Universities <span
                         class="theme-gradient">
@@ -1479,7 +1342,7 @@
 
     <div class="rbt-callto-action rbt-cta-default style-4 bg-gradient-6 mt--75 rbt-section-gap">
         <div class="container">
-            <div class="row align-items-center content-wrapper row--30 mt_dec--30 position-relative">
+            <div class="row align-items-center content-wrapper row--30 mt_dec--30 position-relative" style="top:100px !important">
                 <div class="col-lg-8 mt--30 offset-lg-3">
                     <div class="inner">
                         <div class="content text-left">
@@ -1508,7 +1371,7 @@
     <!-- start award section -->
     <section class="award-section-custom py-5 section-bg position-relative">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-5" style="margin-top:80px;">
                 <h2 class="section-title">Our Awards &amp; Achievements</h2>
                 <p class="text-muted">Recognitions that showcase our commitment to excellence.</p>
             </div>
