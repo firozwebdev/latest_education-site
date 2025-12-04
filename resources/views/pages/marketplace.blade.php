@@ -12535,7 +12535,7 @@
     <!--start explore premium services area  -->
     <style>
         .explore-premium-wrapper {
-            background: #0f0f0f;
+            background: linear-gradient(135deg, #F8F9FF 0%, #FFFFFF 100%);
             padding: 60px 0;
             position: relative;
             overflow: hidden;
@@ -12558,7 +12558,7 @@
         .explore-premium-left h2 {
             font-size: 48px;
             font-weight: 900;
-            color: #FFD700;
+            color: #1D3564;
             line-height: 1.2;
             margin-bottom: 20px;
             letter-spacing: -1px;
@@ -12566,7 +12566,7 @@
 
         .explore-premium-left p {
             font-size: 16px;
-            color: #f5f5f5;
+            color: #656565;
             line-height: 1.7;
             margin-bottom: 30px;
             max-width: 450px;
@@ -12575,21 +12575,23 @@
         .explore-premium-btn {
             display: inline-block;
             padding: 14px 40px;
-            background: linear-gradient(135deg, #B8860B 0%, #FFD700 100%);
-            color: #000;
+            background: linear-gradient(135deg, #1D3564 0%, #242E69 100%);
+            color: #FFFFFF;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 700;
             font-size: 16px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 25px rgba(29, 53, 100, 0.3);
             border: none;
             cursor: pointer;
         }
 
         .explore-premium-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.5);
+            background: linear-gradient(135deg, #242E69 0%, #1D3564 100%);
+            box-shadow: 0 12px 35px rgba(29, 53, 100, 0.4);
+            color: #FFFFFF;
         }
 
         .explore-premium-right {
@@ -12611,18 +12613,19 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            border: 4px solid #FFD700;
+            border: 4px solid #1D3564;
             border-radius: 50%;
             top: 0;
             left: 0;
-            box-shadow: 0 0 50px rgba(255, 215, 0, 0.3), inset 0 0 30px rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 50px rgba(29, 53, 100, 0.2), inset 0 0 30px rgba(29, 53, 100, 0.1);
         }
 
         .ring-center {
             position: absolute;
             width: 160px;
             height: 160px;
-            background: linear-gradient(135deg, #1a1400 0%, #2d1f00 100%);
+            background: linear-gradient(135deg, #E3ECFF 0%, #F6F9FF 100%);
+            border: 3px solid #1D3564;
             border-radius: 50%;
             top: 50%;
             left: 50%;
@@ -12631,13 +12634,14 @@
             align-items: center;
             justify-content: center;
             font-size: 80px;
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.2), inset 0 0 20px rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 40px rgba(29, 53, 100, 0.15);
             z-index: 10;
         }
 
         .service-pill {
             position: absolute;
-            background: rgba(255, 255, 255, 0.98);
+            background: #FFFFFF;
+            border: 2px solid #E5E9FF;
             border-radius: 50px;
             padding: 12px 20px;
             display: flex;
@@ -12645,9 +12649,8 @@
             gap: 12px;
             font-weight: 600;
             font-size: 13px;
-            color: #1a1a1a;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(10px);
+            color: #1D3564;
+            box-shadow: 0 10px 30px rgba(29, 53, 100, 0.15);
             transition: all 0.3s ease;
             white-space: nowrap;
             width: max-content;
@@ -12655,7 +12658,9 @@
 
         .service-pill:hover {
             transform: scale(1.08);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+            background: #E3ECFF;
+            border-color: #1D3564;
+            box-shadow: 0 15px 40px rgba(29, 53, 100, 0.25);
         }
 
         .service-pill-icon {
