@@ -833,6 +833,35 @@
                             font-size: 20px;
                         }
 
+                        /* Video Play Overlay */
+                        .video-play-overlay {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 60px;
+                            height: 60px;
+                            background: rgba(102, 126, 234, 0.9);
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            opacity: 0;
+                            transition: all 0.3s ease;
+                            z-index: 10;
+                        }
+
+                        .success-story-card:hover .video-play-overlay {
+                            opacity: 1;
+                            transform: translate(-50%, -50%) scale(1.1);
+                        }
+
+                        .video-play-overlay i {
+                            color: white;
+                            font-size: 20px;
+                            margin-left: 3px;
+                        }
+
                         @media (max-width: 768px) {
                             .success-story-card {
                                 min-height: auto;
@@ -843,13 +872,22 @@
                             .swiper-button-prev {
                                 display: none;
                             }
+
+                            .video-play-overlay {
+                                width: 50px;
+                                height: 50px;
+                            }
+
+                            .video-play-overlay i {
+                                font-size: 16px;
+                            }
                         }
                     </style>
 
                     <div class="swiper-wrapper">
                         @forelse ($successDeliveries as $delivery)
                             <div class="swiper-slide">
-                                <div class="success-story-card">
+                                <div class="success-story-card" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="{{ $delivery->youtube_link	 ?? 'https://www.youtube.com/embed/dQw4w9WgXcQ' }}" style="cursor: pointer;">
                                     <div>
                                         <div class="success-story-header">
                                             @if ($delivery->image)
@@ -878,6 +916,9 @@
                                         </div>
                                     </div>
                                     <span class="story-destination">{{ $delivery->university_name ?? 'Alumni' }}</span>
+                                    <div class="video-play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
                                 </div>
                             </div>
                         @empty
@@ -896,9 +937,27 @@
                     <div class="swiper-button-prev"></div>
                 </div>
 
+                <!-- Video Modal -->
+                <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content" style="background: #1a1a2e; border: none; border-radius: 15px;">
+                            <div class="modal-header" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 20px;">
+                                <h5 class="modal-title" id="videoModalLabel" style="color: #fff; font-weight: 600;">Student Success Story</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+                            </div>
+                            <div class="modal-body" style="padding: 0;">
+                                <div class="video-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; border-radius: 0 0 15px 15px; overflow: hidden;">
+                                    <iframe id="videoFrame" width="100%" height="100%" style="position: absolute; top: 0; left: 0;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
+                        // Initialize Swiper
                         new Swiper('.success-stories-slider', {
                             slidesPerView: 1,
                             spaceBetween: 30,
@@ -923,6 +982,35 @@
                                 disableOnInteraction: false,
                             },
                             loop: true,
+                        });
+
+                        // Handle video modal
+                        const videoModal = document.getElementById('videoModal');
+                        const videoFrame = document.getElementById('videoFrame');
+                        
+                        // When modal is shown, load the video
+                        videoModal.addEventListener('show.bs.modal', function (event) {
+                            const button = event.relatedTarget;
+                            const videoUrl = button.getAttribute('data-video-url');
+                            
+                            // Convert YouTube URL to embed format if needed
+                            let embedUrl = videoUrl;
+                            if (videoUrl && videoUrl.includes('youtube.com/watch')) {
+                                const videoId = videoUrl.split('v=')[1]?.split('&')[0];
+                                embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                            } else if (videoUrl && videoUrl.includes('youtu.be/')) {
+                                const videoId = videoUrl.split('youtu.be/')[1]?.split('?')[0];
+                                embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                            } else if (videoUrl && !videoUrl.includes('embed')) {
+                                embedUrl = videoUrl + '?autoplay=1';
+                            }
+                            
+                            videoFrame.src = embedUrl;
+                        });
+                        
+                        // When modal is hidden, stop the video
+                        videoModal.addEventListener('hide.bs.modal', function () {
+                            videoFrame.src = '';
                         });
                     });
                 </script>
