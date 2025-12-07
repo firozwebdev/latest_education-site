@@ -206,4 +206,26 @@ class CoursesController extends Controller
         return view('courses/lesson');
     }
 
+    public function countryUniversities($country)
+    {
+        $countryModel = \App\Models\Country::findOrFail($country);
+        $universities = \App\Models\University::where('country_id', $country)
+            ->withCount('courses')
+            ->orderBy('university_name')
+            ->paginate(12);
+        
+        return view('pages/countryUniversities', compact('countryModel', 'universities'));
+    }
+
+    public function universityCourses($university)
+    {
+        $universityModel = \App\Models\University::with('country')->findOrFail($university);
+        $courses = \App\Models\Course::with(['university.country', 'instructor', 'subject'])
+            ->where('university_id', $university)
+            ->orderBy('created_at', 'desc')
+            ->paginate(12);
+        
+        return view('pages/universityCourses', compact('universityModel', 'courses'));
+    }
+
 }

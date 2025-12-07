@@ -96,6 +96,8 @@ Route::prefix('courses')->group(function () {
         Route::get('/course-details-3', 'courseDetails3')->name('courseDetails3');
         Route::get('/course-filter-one-open', 'courseFilterOneOpen')->name('courseFilterOneOpen');
         Route::get('/course-filter-one-toggle', 'courseFilterOneToggle')->name('courseFilterOneToggle');
+        Route::get('/country/{country}/universities', 'countryUniversities')->name('country.universities');
+        Route::get('/university/{university}/courses', 'universityCourses')->name('university.courses');
         Route::get('/course-filter-two-open', 'courseFilterTwoOpen')->name('courseFilterTwoOpen');
         Route::get('/course-filter-two-toggle', 'courseFilterTwoToggle')->name('courseFilterTwoToggle');
         Route::get('/course-masonry', 'courseMasonry')->name('courseMasonry');

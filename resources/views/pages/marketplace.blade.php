@@ -12447,8 +12447,7 @@
                                 <div class="destination-card">
                                     <img src="{{ asset('assets/images/uk.jpg') }}" alt="United Kingdom" loading="lazy">
                                     <div class="destination-overlay">
-                                        <a
-                                            href="https://kmfglobaleducation.com/courses/course-filter-one-toggle?country=1">
+                                        <a href="{{ route('country.universities', 1) }}">
                                             <h4>United Kingdom</h4>
                                         </a>
                                     </div>
@@ -12457,8 +12456,7 @@
                                 <div class="destination-card">
                                     <img src="{{ asset('assets/images/Malta.jpg') }}" alt="Malta" loading="lazy">
                                     <div class="destination-overlay">
-                                        <a
-                                            href="https://kmfglobaleducation.com/courses/course-filter-one-toggle?country=14">
+                                        <a href="{{ route('country.universities', 14) }}">
                                             <h4>Malta</h4>
                                         </a>
                                     </div>
@@ -12467,8 +12465,7 @@
                                 <div class="destination-card">
                                     <img src="{{ asset('assets/images/Canada.jpg') }}" alt="Canada" loading="lazy">
                                     <div class="destination-overlay">
-                                        <a
-                                            href="https://kmfglobaleducation.com/courses/course-filter-one-toggle?country=3">
+                                        <a href="{{ route('country.universities', 3) }}">
                                             <h4>Canada</h4>
                                         </a>
                                     </div>
@@ -12477,8 +12474,7 @@
                                 <div class="destination-card">
                                     <img src="{{ asset('assets/images/Malaysia.jpg') }}" alt="Malaysia" loading="lazy">
                                     <div class="destination-overlay">
-                                        <a
-                                            href="https://kmfglobaleducation.com/courses/course-filter-one-toggle?country=5">
+                                        <a href="{{ route('country.universities', 5) }}">
                                             <h4>Malaysia</h4>
                                         </a>
                                     </div>
@@ -12487,8 +12483,7 @@
                                 <div class="destination-card">
                                     <img src="{{ asset('assets/images/Australia.jpg') }}" alt="Australia" loading="lazy">
                                     <div class="destination-overlay">
-                                        <a
-                                            href="https://kmfglobaleducation.com/courses/course-filter-one-toggle?country=4">
+                                        <a href="{{ route('country.universities', 4) }}">
                                             <h4>Australia</h4>
                                         </a>
                                     </div>
