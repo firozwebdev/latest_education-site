@@ -150,8 +150,8 @@
                                         <li><a href="{{ route('services.admission') }}">Admissions</a></li>
                                         <li><a href="{{ route('services.scholarship') }}">Scholarships</a></li>
                                         <li><a href="{{ route('services.visa-guidance') }}">Visa Guidance</a></li>
-                                        <li><a href="{{ route('services.departure-guidance') }}">Departure
-                                                Registration</a></li>
+                                        <li><a href="{{ route('services.departure-guidance') }}">DepartureRegistration</a></li>
+                                        <li><a href="{{ route('services.ielts-registration') }}">IELTS Registration</a></li>
                                         <li><a href="{{ route('services.career-counsel') }}">Career Counseling</a></li>
                                     </ul>
                                 </li>
@@ -168,7 +168,7 @@
                                 </li>
                                 <li class="with-megamenu has-menu-child-item position-static"><a
                                         href="{{ route('marketplace') }}">Future Career</a></li>
-                                <li class="has-dropdown has-menu-child-item">
+                                {{-- <li class="has-dropdown has-menu-child-item">
                                     <a href="#">About
                                         <i class="feather-chevron-down"></i>
                                     </a>
@@ -177,7 +177,10 @@
                                         <li><a href="{{ route('about') }}">IELTS Registration</a></li>
 
                                     </ul>
-                                </li>
+                                </li> --}}
+                                <li class="with-megamenu has-menu-child-item position-static"><a
+                                        href="{{ route('about') }}">About Us</a></li>
+
                                 <li class="with-megamenu has-menu-child-item position-static"><a
                                         href="{{ route('contact') }}">Contact Us</a></li>
                             </ul>
