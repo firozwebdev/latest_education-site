@@ -131,7 +131,7 @@ Our approach is comprehensive, covering everything from understanding your aspir
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/icon-02.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/icon-02.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -155,7 +155,7 @@ Our counselors offer personalized feedback and recommend industries or fields th
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/studying.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/studying.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -180,7 +180,7 @@ Our counselors help you map out your journey with practical strategies, ensuring
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/airdrop.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/airdrop.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -212,7 +212,7 @@ From building confidence to perfecting your professional etiquette, we ensure yo
             <div class="media">
                 {{-- <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/art-text-element-3.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/art-text-element-3.png') }}" alt="Author Images">
                     </a>
                 </div> --}}
                 <div class="media-body">
@@ -238,7 +238,7 @@ Contact us today to learn more about how we can help you achieve your career goa
             <div class="media">
                 {{-- <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/world.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/world.png') }}" alt="Author Images">
                     </a>
                 </div> --}}
                 <div class="media-body">
