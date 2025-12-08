@@ -131,7 +131,7 @@ Here’s how we can assist you in obtaining your student visa</p>
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/icon-02.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/icon-02.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -154,7 +154,7 @@ We evaluate your profile, including your academic background, financial document
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/studying.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/studying.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -178,7 +178,7 @@ Our team provides step-by-step guidance through the visa application process, he
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/airdrop.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/airdrop.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -202,7 +202,7 @@ We prepare you for the embassy interview with mock sessions and provide tips on 
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/backpack.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/backpack.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -226,7 +226,7 @@ We thoroughly review your visa documents, including your passport, academic tran
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/art-text-element-3.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/art-text-element-3.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -256,7 +256,7 @@ We keep you updated throughout the visa processing stages. From the submission t
             <div class="media">
                 {{-- <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/art-text-element-3.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/art-text-element-3.png') }}" alt="Author Images">
                     </a>
                 </div> --}}
                 <div class="media-body">
@@ -277,7 +277,7 @@ KMF GLOBAL EDUCATION LTD  has helped thousands of students successfully secure t
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/service-04.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/service-04.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -298,7 +298,7 @@ We stay up-to-date with the latest visa regulations and policies.</p>
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/service-05.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/service-05.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -319,7 +319,7 @@ Our services are tailored to your individual needs, ensuring the best possible o
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/world.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/world.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -342,7 +342,7 @@ Our proven track record ensures that you have the highest chance of getting your
             <div class="media">
                 {{-- <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/world.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/world.png') }}" alt="Author Images">
                     </a>
                 </div> --}}
                 <div class="media-body">
@@ -364,7 +364,7 @@ Our students’ success stories speak volumes about our visa guidance expertise.
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/world.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/world.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -386,7 +386,7 @@ Our proactive approach has helped students get their visas approved faster than 
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/world.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/world.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -408,7 +408,7 @@ Every student receives personalized guidance based on their unique needs and vis
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/world.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/world.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
