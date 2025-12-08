@@ -114,12 +114,12 @@
     </script>
     <style>
         /*
-            ! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
-            */
+                ! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
+                */
         /*
-            1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
-            2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
-            */
+                1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+                2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+                */
 
         *,
         ::before,
@@ -140,14 +140,14 @@
         }
 
         /*
-            1. Use a consistent sensible line-height in all browsers.
-            2. Prevent adjustments of font size after orientation changes in iOS.
-            3. Use a more readable tab size.
-            4. Use the user's configured `sans` font-family by default.
-            5. Use the user's configured `sans` font-feature-settings by default.
-            6. Use the user's configured `sans` font-variation-settings by default.
-            7. Disable tap highlights on iOS
-            */
+                1. Use a consistent sensible line-height in all browsers.
+                2. Prevent adjustments of font size after orientation changes in iOS.
+                3. Use a more readable tab size.
+                4. Use the user's configured `sans` font-family by default.
+                5. Use the user's configured `sans` font-feature-settings by default.
+                6. Use the user's configured `sans` font-variation-settings by default.
+                7. Disable tap highlights on iOS
+                */
 
         html,
         :host {
@@ -170,9 +170,9 @@
         }
 
         /*
-            1. Remove the margin in all browsers.
-            2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
-            */
+                1. Remove the margin in all browsers.
+                2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+                */
 
         body {
             margin: 0;
@@ -182,10 +182,10 @@
         }
 
         /*
-            1. Add the correct height in Firefox.
-            2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
-            3. Ensure horizontal rules are visible by default.
-            */
+                1. Add the correct height in Firefox.
+                2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+                3. Ensure horizontal rules are visible by default.
+                */
 
         hr {
             height: 0;
@@ -197,16 +197,16 @@
         }
 
         /*
-            Add the correct text decoration in Chrome, Edge, and Safari.
-            */
+                Add the correct text decoration in Chrome, Edge, and Safari.
+                */
 
         abbr:where([title]) {
             text-decoration: underline dotted;
         }
 
         /*
-            Remove the default font size and weight for headings.
-            */
+                Remove the default font size and weight for headings.
+                */
 
         h1,
         h2,
@@ -219,8 +219,8 @@
         }
 
         /*
-            Reset links to optimize for opt-in styling instead of opt-out.
-            */
+                Reset links to optimize for opt-in styling instead of opt-out.
+                */
 
         a {
             color: inherit;
@@ -228,8 +228,8 @@
         }
 
         /*
-            Add the correct font weight in Edge and Safari.
-            */
+                Add the correct font weight in Edge and Safari.
+                */
 
         b,
         strong {
@@ -237,11 +237,11 @@
         }
 
         /*
-            1. Use the user's configured `mono` font-family by default.
-            2. Use the user's configured `mono` font-feature-settings by default.
-            3. Use the user's configured `mono` font-variation-settings by default.
-            4. Correct the odd `em` font sizing in all browsers.
-            */
+                1. Use the user's configured `mono` font-family by default.
+                2. Use the user's configured `mono` font-feature-settings by default.
+                3. Use the user's configured `mono` font-variation-settings by default.
+                4. Correct the odd `em` font sizing in all browsers.
+                */
 
         code,
         kbd,
@@ -258,16 +258,16 @@
         }
 
         /*
-            Add the correct font size in all browsers.
-            */
+                Add the correct font size in all browsers.
+                */
 
         small {
             font-size: 80%;
         }
 
         /*
-            Prevent `sub` and `sup` elements from affecting the line height in all browsers.
-            */
+                Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+                */
 
         sub,
         sup {
@@ -286,10 +286,10 @@
         }
 
         /*
-            1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
-            2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
-            3. Remove gaps between table borders by default.
-            */
+                1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+                2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+                3. Remove gaps between table borders by default.
+                */
 
         table {
             text-indent: 0;
@@ -301,10 +301,10 @@
         }
 
         /*
-            1. Change the font styles in all browsers.
-            2. Remove the margin in Firefox and Safari.
-            3. Remove default padding in all browsers.
-            */
+                1. Change the font styles in all browsers.
+                2. Remove the margin in Firefox and Safari.
+                3. Remove default padding in all browsers.
+                */
 
         button,
         input,
@@ -334,8 +334,8 @@
         }
 
         /*
-            Remove the inheritance of text transform in Edge and Firefox.
-            */
+                Remove the inheritance of text transform in Edge and Firefox.
+                */
 
         button,
         select {
@@ -343,9 +343,9 @@
         }
 
         /*
-            1. Correct the inability to style clickable types in iOS and Safari.
-            2. Remove default button styles.
-            */
+                1. Correct the inability to style clickable types in iOS and Safari.
+                2. Remove default button styles.
+                */
 
         button,
         input:where([type='button']),
@@ -360,32 +360,32 @@
         }
 
         /*
-            Use the modern Firefox focus style for all focusable elements.
-            */
+                Use the modern Firefox focus style for all focusable elements.
+                */
 
         :-moz-focusring {
             outline: auto;
         }
 
         /*
-            Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
-            */
+                Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+                */
 
         :-moz-ui-invalid {
             box-shadow: none;
         }
 
         /*
-            Add the correct vertical alignment in Chrome and Firefox.
-            */
+                Add the correct vertical alignment in Chrome and Firefox.
+                */
 
         progress {
             vertical-align: baseline;
         }
 
         /*
-            Correct the cursor style of increment and decrement buttons in Safari.
-            */
+                Correct the cursor style of increment and decrement buttons in Safari.
+                */
 
         ::-webkit-inner-spin-button,
         ::-webkit-outer-spin-button {
@@ -393,9 +393,9 @@
         }
 
         /*
-            1. Correct the odd appearance in Chrome and Safari.
-            2. Correct the outline style in Safari.
-            */
+                1. Correct the odd appearance in Chrome and Safari.
+                2. Correct the outline style in Safari.
+                */
 
         [type='search'] {
             -webkit-appearance: textfield;
@@ -405,17 +405,17 @@
         }
 
         /*
-            Remove the inner padding in Chrome and Safari on macOS.
-            */
+                Remove the inner padding in Chrome and Safari on macOS.
+                */
 
         ::-webkit-search-decoration {
             -webkit-appearance: none;
         }
 
         /*
-            1. Correct the inability to style clickable types in iOS and Safari.
-            2. Change font properties to `inherit` in Safari.
-            */
+                1. Correct the inability to style clickable types in iOS and Safari.
+                2. Change font properties to `inherit` in Safari.
+                */
 
         ::-webkit-file-upload-button {
             -webkit-appearance: button;
@@ -425,16 +425,16 @@
         }
 
         /*
-            Add the correct display in Chrome and Safari.
-            */
+                Add the correct display in Chrome and Safari.
+                */
 
         summary {
             display: list-item;
         }
 
         /*
-            Removes the default spacing and border for appropriate elements.
-            */
+                Removes the default spacing and border for appropriate elements.
+                */
 
         blockquote,
         dl,
@@ -470,24 +470,24 @@
         }
 
         /*
-            Reset default styling for dialogs.
-            */
+                Reset default styling for dialogs.
+                */
         dialog {
             padding: 0;
         }
 
         /*
-            Prevent resizing textareas horizontally by default.
-            */
+                Prevent resizing textareas horizontally by default.
+                */
 
         textarea {
             resize: vertical;
         }
 
         /*
-            1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
-            2. Set the default placeholder color to the user's configured gray 400 color.
-            */
+                1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+                2. Set the default placeholder color to the user's configured gray 400 color.
+                */
 
         input::placeholder,
         textarea::placeholder {
@@ -498,8 +498,8 @@
         }
 
         /*
-            Set the default cursor for buttons.
-            */
+                Set the default cursor for buttons.
+                */
 
         button,
         [role="button"] {
@@ -507,17 +507,17 @@
         }
 
         /*
-            Make sure disabled buttons don't get the pointer cursor.
-            */
+                Make sure disabled buttons don't get the pointer cursor.
+                */
         :disabled {
             cursor: default;
         }
 
         /*
-            1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
-            2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
-               This can trigger a poorly considered lint error in some tools but is included by design.
-            */
+                1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+                2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+                   This can trigger a poorly considered lint error in some tools but is included by design.
+                */
 
         img,
         svg,
@@ -534,8 +534,8 @@
         }
 
         /*
-            Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
-            */
+                Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+                */
 
         img,
         video {
@@ -6286,8 +6286,8 @@
 
 
             /* .swiper{
-                top: -5rem;
-              } */
+                    top: -5rem;
+                  } */
 
             .share-btn .popupshareside {
                 top: 357px !important;
@@ -12044,17 +12044,19 @@
                 opacity: 0.3;
             }
         }
+
         .popular-destinations-section {
             padding: 0px !important;
         }
+
         .rbt-section-gap {
-           padding: 0px !important; /*120px 0; */
+            padding: 0px !important;
+            /*120px 0; */
         }
 
         .rbt-video-area {
-            margin-top:70px;
+            margin-top: 70px;
         }
-                
     </style>
 
     <div class="sticky-consult" role="button" tabindex="0" aria-label="Book experts counselling"
@@ -12758,7 +12760,7 @@
         }
     </style>
 
-    <section id="explorePremium" class="explore-premium-wrapper">
+    {{-- <section id="explorePremium" class="explore-premium-wrapper">
         <div class="explore-premium-inner">
             <!-- Left Content -->
             <div class="explore-premium-left">
@@ -12806,9 +12808,76 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!--end explore premium services area  -->
+
+    <div class="rbt-categories-area bg-color-">
+        <div class="container">
+            <div class="row">
+                <div class=" grid grid-cols-1 lg:grid-cols-2 min-h-[320px]">
+                    <div
+                        class="bg-gradient-to-r from-[#00216E] to-[#DB0C28]  left-sec-gra text-white  flex flex-col justify-center">
+                        <div class="">
+                            <h2 class="text-sm font-semibold uppercase tracking-wide text-white">Want to study in the UK?
+                            </h2>
+                            <h1 class="text-4xl text-white font-bold mt-4">Get ahead with AHZ!</h1>
+                            <p class="text-lg text-white mt-4">Welcome to AHZ! If you dream of studying in the UK, we’re
+                                here to help you find the right course, the right university, and the right funding options.
+                                Try our handy search tool, find out everything you need to know if you want to study in the
+                                UK, and learn all about the UK’s best education consultants.</p>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col left-sct ">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 rgt-icon">
+                            <div class="flex items-center space-x-4 p-8 bg-gray-50 rounded-lg shadow-md  ">
+                                <div class="flex justify-center items-center"><img
+                                        src="https://mie-global-te43fd.s3.amazonaws.com/static/images/location-01.original.png"
+                                        alt="Location Map" class="w-14 h-14 max-w-lg object-contain rounded-lg"></div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800">Located in</h3>
+                                    <p class="text-sm text-[#242E69] font-medium">15+ Countries</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 p-8 bg-gray-50  rounded-lg shadow-md">
+                                <div class="flex justify-center items-center"><img
+                                        src="https://mie-global-te43fd.s3.amazonaws.com/static/images/end-to-end-01.original.png"
+                                        alt="end-to-end" class="w-14 h-14 max-w-lg object-contain rounded-lg"></div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800">End to End</h3>
+                                    <p class="text-sm text-[#242E69] font-medium">Services</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 p-8 bg-gray-50  rounded-lg shadow-md">
+                                <div class="flex justify-center items-center"><img
+                                        src="https://mie-global-te43fd.s3.amazonaws.com/static/images/visa-01.original.png"
+                                        alt="institution" class="w-14 h-14 max-w-lg object-contain rounded-lg"></div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800">140+ Partner</h3>
+                                    <p class="text-sm text-[#242E69] font-medium">Institutions</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 p-8 bg-gray-50  rounded-lg shadow-md">
+                                <div class="flex justify-center items-center"><img
+                                        src="https://mie-global-te43fd.s3.amazonaws.com/static/images/institution-01.original.png"
+                                        alt="visa" class="w-14 h-14 max-w-lg object-contain rounded-lg"></div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800">500+ British Council</h3>
+                                    <p class="text-sm text-[#242E69] font-medium">Trained Counsellors</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
 
 
     <!-- Start Top University Area  -->
@@ -13439,7 +13508,7 @@
 
 
     <div class="rbt-video-area bg-color-white overflow-hidden">
-        <div class="container" >
+        <div class="container">
             <div class="row mb--60">
                 <div class="col-lg-12">
                     <div class="section-title text-center">
@@ -13552,19 +13621,22 @@
                 <div class="process-card">
                     <div class="process-card-icon guidance">📋</div>
                     <h4>Guidance</h4>
-                    <p>We provide personalized support for each important academic milestone and decision in your study abroad journey.</p>
+                    <p>We provide personalized support for each important academic milestone and decision in your study
+                        abroad journey.</p>
                 </div>
 
                 <div class="process-card">
                     <div class="process-card-icon support">✈️</div>
                     <h4>Support</h4>
-                    <p>Get 24/7 assistance from our expert team throughout the application process and beyond your admission.</p>
+                    <p>Get 24/7 assistance from our expert team throughout the application process and beyond your
+                        admission.</p>
                 </div>
 
                 <div class="process-card">
                     <div class="process-card-icon expertise">⭐</div>
                     <h4>Expertise</h4>
-                    <p>Leverage our extensive knowledge of global universities and ensure your profile stands out to admissions.</p>
+                    <p>Leverage our extensive knowledge of global universities and ensure your profile stands out to
+                        admissions.</p>
                 </div>
             </div>
         </div>

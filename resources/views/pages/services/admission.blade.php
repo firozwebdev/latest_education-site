@@ -129,7 +129,7 @@
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="https://kmfglobaleducation.com/public/assets/images/testimonial/icon-02.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/icon-02.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -151,7 +151,7 @@
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="https://kmfglobaleducation.com/public/assets/images/testimonial/studying.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/studying.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -173,7 +173,7 @@
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="https://kmfglobaleducation.com/public/assets/images/testimonial/airdrop.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/airdrop.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -195,7 +195,7 @@
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="https://kmfglobaleducation.com/public/assets/images/testimonial/backpack.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/backpack.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -217,7 +217,7 @@
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="https://kmfglobaleducation.com/public/assets/images/testimonial/art-text-element-3.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/art-text-element-3.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -246,7 +246,7 @@
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="https://kmfglobaleducation.com/public/assets/images/testimonial/art-text-element-3.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/art-text-element-3.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -267,7 +267,7 @@ Receive comprehensive support throughout the entire admission process.          
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="https://kmfglobaleducation.com/public/assets/images/testimonial/service-04.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/service-04.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -288,7 +288,7 @@ We handle all the complexities to ensure that your application is submitted corr
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="https://kmfglobaleducation.com/public/assets/images/testimonial/service-05.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/service-05.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -309,7 +309,7 @@ Our experienced team is always available to assist you, from document preparatio
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="https://kmfglobaleducation.com/public/assets/images/testimonial/world.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/world.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">

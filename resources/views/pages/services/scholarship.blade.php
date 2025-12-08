@@ -129,7 +129,7 @@ We provide detailed guidance on applying for scholarships, including university-
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/icon-02.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/icon-02.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -151,7 +151,7 @@ Many universities offer significant scholarships to international students, ofte
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/studying.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/studying.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -174,7 +174,7 @@ As an authorized partner, KMF GLOBAL EDUCATION LTD offers exclusive scholarships
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/airdrop.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/airdrop.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -196,7 +196,7 @@ In addition to university-specific scholarships, we help our students secure mer
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/backpack.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/backpack.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -218,7 +218,7 @@ Several countries offer government-funded scholarships for international student
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/art-text-element-3.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/art-text-element-3.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -270,7 +270,7 @@ At EducationHub, our team provides personalized scholarship guidance based on yo
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/service-04.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/service-04.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -291,7 +291,7 @@ We perform in-depth research to find the best scholarship opportunities availabl
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/service-05.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/service-05.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -312,7 +312,7 @@ Our experts help you compile all the necessary documents, from academic records 
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/world.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/world.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
@@ -333,7 +333,7 @@ We provide assistance in writing impactful personal statements and scholarship e
             <div class="media">
                 <div class="thumbnail">
                     <a href="#">
-                        <img src="http://localhost:8000/assets/images/testimonial/world.png" alt="Author Images">
+                        <img src="{{ asset('assets/images/testimonial/world.png') }}" alt="Author Images">
                     </a>
                 </div>
                 <div class="media-body">
